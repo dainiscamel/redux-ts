@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+### redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Redux 동작 방식
 
-## Available Scripts
+`Action Creator > Action > dispatch > Reducer > State`
 
-In the project directory, you can run:
+## Redux를 사용한 React의 렌더링 과정
 
-### `npm start`
+1. component 내에 이벤트 호출(클릭, 입력 등)
+   이벤트와 연결된 action creator 호출
+2. action creator가 생성한 action 호출
+3. action이 reducer로 전달(dispatch)
+4. dispatch된 action의 영향으로 reducer의 state값이 변화
+5. 렌더링
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Redux store design
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Reducer Setup
 
-### `npm test`
+- 변화를 일으키는 함수. 즉, 상태를 받아와서 새로운 상태로 반환하는 기능을 하는 함수에 대한 세팅.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. 리턴 타입 명시
 
-### `npm run build`
+- 리듀서가 반환할 새로운 상태에 대한 명시.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Action 작성
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Action Creators 추가
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Request 로직 추가
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. Dispatch 적용
