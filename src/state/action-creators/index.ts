@@ -2,11 +2,10 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
-import { AnyCnameRecord } from "dns";
 
 // 액션 생성기 사용
 // 비동기작업 작성자를 작성하기 위해 Redux Thunk 사용
-const searchRepositories = (term: string) => {
+export const searchRepositories = (term: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.SEARCH_REPOSITORIES,
@@ -22,13 +21,13 @@ const searchRepositories = (term: string) => {
         }
       );
 
-      const names = data.objeacts.map((result: any) => {
-        return result.pakage.name;
+      const names = data.objects.map((result: any) => {
+        return result.package.name;
       });
 
       dispatch({
         type: ActionType.SEARCH_REPOSITORIES_SUCCESS,
-        payload: data,
+        payload: names,
       });
     } catch (err: any) {
       dispatch({
